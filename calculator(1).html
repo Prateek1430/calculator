@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calculator</title>
+	<style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        body {
+	background-color: #f2f2f2;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.calculator {
+	margin: auto;
+	width: 300px;
+	background-color: #fff;
+	box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+	padding: 10px;
+	border-radius: 5px;
+}
+
+.display {
+	background-color: #e6e6e6;
+	padding: 10px;
+	margin-bottom: 10px;
+	border-radius: 5px;
+}
+
+.display input{
+	width: 100%;
+	border: none;
+	font-size: 30px;
+	text-align: right;
+}
+
+.keys {
+	/* width:300px; */
+	/* border:1px solid red; */
+	display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.row {
+	display: flex;
+	justify-content:center;
+	align-items: center;
+	gap:30px;
+}
+
+button {
+	background-color: #f2f2f2;
+	border: none;
+	width:40px;
+	height:40px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 15px;
+	font-size: 20px;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+button:hover {
+	background-color: #e6e6e6;
+}
+
+button.operator {
+	background-color: #ff9900;
+	color: #fff;
+}
+
+button.operator:hover {
+	background-color: #e68a00;
+}
+
+button.clear {
+	background-color: #ff3300;
+	color: #fff;
+}
+
+button.clear:hover {
+	background-color: #cc2900;
+}
+.equal{
+    text-align: center;
+    width: 300px;
+	/* height: 30px; */
+	display: flex;
+	/* justify-content: center;
+	align-items: center; */
+	gap: 30px;
+}
+
+button.equal {
+	background-color: #009933;
+	color: #fff;
+}
+
+button.equal:hover {
+	background-color: #007a29;
+}
+.del{
+	background-color: #cc2900;
+}
+
+    </style>
+</head>
+<body>
+	<div class="calculator">
+		<div class="display">
+			<input type="text" placeholder="0" id="input" readonly>
+		</div>
+		<div class="keys">
+			<div class="row">
+				<button type="button" onclick="dis('7')">7</button>
+				<button type="button"  onclick="dis('8')">8</button>
+				<button type="button" onclick="dis('9')">9</button>
+				<button class="operator" type="button" onclick="dis('/')">/</button>
+			</div>
+			<div class="row">
+				<button type="button" onclick="dis('4')">4</button>
+				<button type="button" onclick="dis('5')">5</button>
+				<button type="button" onclick="dis('6')">6</button>
+				<button class="operator" type="button" onclick="dis('*')">*</button>
+			</div>
+			<div class="row">
+				<button type="button" onclick="dis('1')">1</button>
+				<button type="button" onclick="dis('2')">2</button>
+				<button type="button" onclick="dis('3')">3</button>
+				<button class="operator" type="button" onclick="dis('-')">-</button>
+			</div>
+			<div class="row">
+				<button type="button" onclick="dis('0')">0</button>
+				<button type="button" onclick="dis('.')">.</button>
+				<button class="operator" type="button" onclick="dis('+')">+</button>
+				<button class="clear" type="button" onclick="clearall()">C</button>
+			</div>
+			<div class="equal">
+				<button class="equal" type="button" onclick="solve()">=</button>
+				<button type="button" class="del" onclick="clearonce()">Del</button>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		let x = document.getElementById("input");
+		function dis(val){
+			x.value += val;
+		}
+
+		function clearall(){
+			x.value =""
+		}
+
+		function solve(){
+			x.value = eval(x.value);
+		}
+		function clearonce(){
+			let y = x.value.slice(0,-1);
+			x.value = y;
+		}
+	</script>
+</body>
+</html>
